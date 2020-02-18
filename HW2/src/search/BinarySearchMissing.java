@@ -1,11 +1,8 @@
 package search;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.lang.Math;
 
-public class BinarySearch {
+public class BinarySearchMissing {
     public static void main(String[] args) {
         int elem = Integer.parseInt(args[0]);
         ArrayList<Integer> arr = new ArrayList<>();
@@ -34,27 +31,12 @@ public class BinarySearch {
             }
         }
         // (l = r - 1 & I) -> r is minimal index that maintains task. (arr[r-1] > elem)
-        return r;
-    }
-    // Post: r = min[0..arr.size()]: a[r] <= elem
-
-    // Pre: arr sorted in non-growing order(∀ i, j ∈ [0..arr.size()) : i >= j -> a[i] <= a[j])
-    // I: arr[l] > elem >= arr[r] || elem not in arr
-    private static int RecursiveSearch(ArrayList<Integer> arr, int elem, int l, int r) {
-        int m = (l + r) / 2;
-        // I and l < m < r
-        if (!(l < r - 1)) {
-            return r;
-            // (l = r - 1 & I) -> r is minimal index that maintains task. (arr[r-1] > elem)
+        if (arr.size() != 0 && arr.get((l + 1) % arr.size()) == elem) {
+            return l + 1;
         } else {
-            if (arr.get(m) <= elem) {
-                return RecursiveSearch(arr, elem, l, m);
-                // (elem >= a[m] && r=m) -> I
-            } else {
-                return RecursiveSearch(arr, elem, m, r);
-                // (elem < a[m] && l=m) -> I
-            }
+            return -(r + 1);
         }
+
     }
-    // Post: r = min[0..arr.size()]: a[r] <= elem
 }
+
