@@ -19,7 +19,7 @@ public class BinarySearch {
     // Pre: arr sorted in non-growing order(∀ i, j ∈ [0..arr.size()) : i >= j -> a[i] <= a[j])
     private static int IterativeSearch(ArrayList<Integer> arr, int elem) {
         int l = -1, r = arr.size(), m;
-        // l = -1, r = arr.size(), and a[arr.size()] = -∞.
+        // l = -1, r = arr.size(), and arr[arr.size()] = -∞ and arr[-1] = +∞ .
         // I: arr[l] > elem >= arr[r] || elem not in arr
         while (l < r - 1) {
             // I and l < (r - 1)
@@ -37,8 +37,10 @@ public class BinarySearch {
         return r;
     }
     // Post: r = min[0..arr.size()]: a[r] <= elem
+    //       Arr does not change
 
-    // Pre: arr sorted in non-growing order(∀ i, j ∈ [0..arr.size()) : i >= j -> a[i] <= a[j])
+
+    // Pre: arr sorted in non-growing order(∀ i, j ∈ [0..arr.size()) : i >= j -> a[i] <= a[j]) && l = -1 && r = arr.size()
     // I: arr[l] > elem >= arr[r] || elem not in arr
     private static int RecursiveSearch(ArrayList<Integer> arr, int elem, int l, int r) {
         int m = (l + r) / 2;
@@ -57,4 +59,6 @@ public class BinarySearch {
         }
     }
     // Post: r = min[0..arr.size()]: a[r] <= elem
+    //       Arr does not change
+
 }
